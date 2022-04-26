@@ -4,8 +4,14 @@
 #   default     = true
 # }
 
-variable "ec2_count" {
-  description = "Number of Subnets"
+variable "public_ec2_count" {
+  description = "Number of public ec2 instances"
+  type        = string
+  default     = ""
+}
+
+variable "private_ec2_count" {
+  description = "Number of private ec2 instances"
   type        = string
   default     = ""
 }
@@ -69,4 +75,10 @@ variable "tags" {
   description = "A mapping of tags to assign to the resource"
   type        = map(string)
   default     = {}
+}
+
+variable "public_security_group" {
+  description = "Public Security Group"
+  type        = string
+  default     = ""
 }

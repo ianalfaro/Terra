@@ -32,3 +32,8 @@ output "azs" {
   description = "A list of availability zones specified as argument to this module"
   value       = var.azs[*]
 }
+
+output "public_security_group_id" {
+  description = "A list of availability zones specified as argument to this module"
+  value       = aws_security_group.public_security_group.id
+}

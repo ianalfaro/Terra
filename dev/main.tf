@@ -62,13 +62,16 @@ module "ec2_multiple" {
 
   source = "../module/ec2"
 
-  ec2_count     = "3"
+  public_ec2_count     = "3"
+  private_ec2_count     = "3"
   name          = local.name
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
 
   azs            = module.vpc.azs
   public_subnets = module.vpc.public_subnets
+  private_subnets = module.vpc.private_subnets
+  public_security_group = module.vpc.public_security_group_id
 
   tags = local.tags
 }
