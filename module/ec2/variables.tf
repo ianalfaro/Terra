@@ -77,8 +77,14 @@ variable "tags" {
   default     = {}
 }
 
-variable "public_security_group" {
-  description = "Public Security Group"
-  type        = string
-  default     = ""
+variable "pub_security_group_id" {
+  description = "Security Groups"
+  type        = list(string)
+  default     = []
+}
+
+variable "priv_security_group_id" {
+  description = "Security Groups"
+  type        = list(string)
+  default     = []
 }

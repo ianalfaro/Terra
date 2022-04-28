@@ -58,7 +58,7 @@ module "vpc" {
 # EC2 Module
 ################################################################################
 module "ec2_multiple" {
-  # depends_on=[module.vpc]
+#  depends_on=[module.security-group]
 
   source = "../module/ec2"
 
@@ -71,7 +71,43 @@ module "ec2_multiple" {
   azs            = module.vpc.azs
   public_subnets = module.vpc.public_subnets
   private_subnets = module.vpc.private_subnets
-  public_security_group = module.vpc.public_security_group_id
+  pub_security_group_id = module.pub-security-group.the_security_group_id
+  priv_security_group_id = module.priv-security-group.the_security_group_id
 
   tags = local.tags
 }
+
+
+#################################
+# Security group
+#################################
+module "pub-security-group" {
+  source = "../module/securitygroup"
+
+  name        = "public-sg"
+  description = "Public security group"
+  vpc_id      = module.vpc.vpc_id
+  use_name_prefix = false
+  ingress_cidr_blocks = ["68.144.113.14/32"]
+  ingress_rules       = ["ssh-tcp","https-443-tcp"]
+
+  tags = local.tags
+
+}
+
+module "priv-security-group" {
+  source = "../module/securitygroup"
+
+  name        = "web2app-sg"
+  description = "Web to App security group"
+  vpc_id      = module.vpc.vpc_id
+  use_name_prefix = false
+  ingress_cidr_blocks = module.vpc.public_subnets_cidr_blocks
+  ingress_rules       = ["http-80-tcp","http-8080-tcp"]
+
+  tags = local.tags
+
+}
+
+
+
