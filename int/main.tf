@@ -57,7 +57,6 @@ module "vpc" {
 # EC2 Module
 ################################################################################
 module "ec2_multiple" {
-  # depends_on=[module.vpc]
 
   source = "../module/ec2"
 

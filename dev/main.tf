@@ -58,7 +58,6 @@ module "vpc" {
 # EC2 Module
 ################################################################################
 module "ec2_multiple" {
-#  depends_on=[module.security-group]
 
   source = "../module/ec2"
 

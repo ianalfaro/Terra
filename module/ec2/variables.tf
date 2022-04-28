@@ -1,8 +1,3 @@
-# variable "create" {
-#   description = "Whether to create an instance"
-#   type        = bool
-#   default     = true
-# }
 
 variable "public_ec2_count" {
   description = "Number of public ec2 instances"
@@ -45,12 +40,6 @@ variable "private_subnet_suffix" {
   type        = string
   default     = "private"
 }
-
-# variable "cidr" {
-#   description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
-#   type        = string
-#   default     = "0.0.0.0/0"
-# }
 
 variable "name" {
   description = "Name to be used on EC2 instance created"
