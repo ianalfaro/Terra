@@ -14,5 +14,12 @@ variable "rules" {
     https-8443-tcp = [8443, 8443, "tcp", "HTTPS"]
     # ICMP
     all-icmp      = [-1, -1, "icmp", "All IPV4 ICMP"]
+    # MySQL
+    mysql-tcp = [3306, 3306, "tcp", "MySQL/Aurora"]
+    # MSSQL Server
+    mssql-tcp           = [1433, 1433, "tcp", "MSSQL Server"]
+    mssql-udp           = [1434, 1434, "udp", "MSSQL Browser"]
+    mssql-analytics-tcp = [2383, 2383, "tcp", "MSSQL Analytics"]
+    mssql-broker-tcp    = [4022, 4022, "tcp", "MSSQL Broker"]
   }
 }

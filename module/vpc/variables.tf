@@ -22,6 +22,12 @@ variable "subnet_count" {
   default     = ""
 }
 
+variable "db_subnet_count" {
+  description = "Number of DB Subnets"
+  type        = string
+  default     = "2"
+}
+
 variable "private_subnets" {
   description = "A list of private subnets inside the VPC"
   type        = list(string)
@@ -29,6 +35,12 @@ variable "private_subnets" {
 }
 
 variable "public_subnets" {
+  description = "A list of public subnets inside the VPC"
+  type        = list(string)
+  default     = []
+}
+
+variable "db_subnets" {
   description = "A list of public subnets inside the VPC"
   type        = list(string)
   default     = []
@@ -56,6 +68,12 @@ variable "private_subnet_suffix" {
   description = "Suffix to append to private subnets name"
   type        = string
   default     = "private"
+}
+
+variable "db_subnet_suffix" {
+  description = "Suffix to append to db subnets name"
+  type        = string
+  default     = "db"
 }
 
 variable "vpc_tags" {

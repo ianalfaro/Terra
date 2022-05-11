@@ -28,6 +28,16 @@ output "public_subnets_cidr_blocks" {
   value       = aws_subnet.public[*].cidr_block
 }
 
+output "db_subnets" {
+  description = "List of IDs of public subnets"
+  value       = aws_subnet.db[*].id
+}
+
+output "db_subnets_cidr_blocks" {
+  description = "List of cidr_blocks of DB subnets"
+  value       = aws_subnet.db[*].cidr_block
+}
+
 output "azs" {
   description = "A list of availability zones specified as argument to this module"
   value       = var.azs[*]
